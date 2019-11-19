@@ -695,13 +695,18 @@ static inline uint64_t n_dhcp4_gettime(clockid_t clock) {
         return ts.tv_sec * 1000ULL * 1000ULL * 1000ULL + ts.tv_nsec;
 }
 
-#define n_dhcp4_c_log(_config, _level, _fmt, ...)                              \
+#define n_dhcp4_c_log(_config, _level, ...)                                    \
         do {                                                                   \
                 const NDhcp4ClientConfig *__config = _config;                  \
                                                                                \
                 if (_level <= __config->log.level && __config->log.func) {     \
-                        _config->log.func(_level,                              \
-                                          __config->log.data,                  \
-                                          _fmt, __VA_ARGS__);                  \
+                        if (1) {                                               \
+                                _config->log.func(_level,                      \
+                                                  __config->log.data,          \
+                                                  __VA_ARGS__);                \
+                        } else {                                               \
+                                /* To have the compiler check arguments */     \
+                                printf(__VA_ARGS__);                           \
+                        }                                                      \
                 }                                                              \
         } while (0)
