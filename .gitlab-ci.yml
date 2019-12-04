@@ -4,7 +4,27 @@
 # If things don't seem to work, this can help:
 # https://gitlab.freedesktop.org/NetworkManager/NetworkManager/-/ci/lint
 
+###############################################################################
+
+variables:
+  UPSTREAM_REPO: wayland/weston
+  DEBIAN_VERSION: buster
+  DEBIAN_EXEC: 'bash .gitlab-ci/debian-install.sh'
+  DEBIAN_TAG: '2019-11-04.0'
+  DEBIAN_CONTAINER_IMAGE: $CI_REGISTRY_IMAGE/debian/$DEBIAN_VERSION:$DEBIAN_TAG
+
+.ci_templates_common: &ci_templates_common
+  project: 'wayland/ci-templates'
+  ref: b4b098a707c8f39d18f1a98d4bcbe65372ff9e17
+
+include:
+  - <<: *ci_templates_common
+    file: '/templates/debian.yml'
+
+###############################################################################
+
 stages:
+  - containers-build
   - test
   - deploy
 
