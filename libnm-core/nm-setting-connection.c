@@ -1820,7 +1820,7 @@ nm_setting_connection_class_init (NMSettingConnectionClass *klass)
 	 */
 	obj_properties[PROP_AUTOCONNECT] =
 	    g_param_spec_boolean (NM_SETTING_CONNECTION_AUTOCONNECT, "", "",
-	                          TRUE,
+	                          FALSE,
 	                          G_PARAM_READWRITE |
 	                          G_PARAM_CONSTRUCT |
 	                          NM_SETTING_PARAM_FUZZY_IGNORE |

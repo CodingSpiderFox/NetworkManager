@@ -75,7 +75,7 @@ _LOG_DECLARE_SELF (NMDevice);
 
 /*****************************************************************************/
 
-#define DEFAULT_AUTOCONNECT    TRUE
+#define DEFAULT_AUTOCONNECT    FALSE
 #define DHCP_GRACE_PERIOD_SEC  480
 
 #define CARRIER_WAIT_TIME_MS 6000
